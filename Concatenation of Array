@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+
+// void getConcatenation(int* nums, int numsSize, int* ans, int ansSize) {
+//     //nums array, nums size, ans array, ans size
+//     //input nums array, output ans array
+//     //ex: nums= 1,2,1,4, ans = 1,2,1,4,1,2,1,4
+    
+        
+//         for(int j = 0; j <numsSize; j++){
+//             ans[j] = nums[j];
+//             ans[j+numsSize] = nums[j];
+//         }
+// }
+    
+
+void getConcatenation(uint8_t* nums, uint8_t numsSize, uint8_t* ans, uint8_t ansSize) {
+    
+    memcpy(ans, nums, numsSize);
+    memmove(&ans[numsSize], ans, numsSize);
+    //*memmove(void *dest, const void *src, size_t n);
+    //dest: pointer to the destination mem block
+    //src: pointer to the source mem block
+    //n: number of bytes to copy
+}
+
+
+int main() {
+    uint8_t nums[] = {1, 4, 1, 2, 1, 5 };
+    uint8_t numsSize = sizeof(nums) / sizeof(nums[0]);
+    uint8_t ansSize = 2 * numsSize;
+    uint8_t ans[ansSize];
+
+    getConcatenation(nums, numsSize, ans, ansSize);
+
+    for (int i = 0; i < ansSize; i++) {
+        printf("%d ", ans[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
