@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+// Declare the function you'll implement
+int majorityElement(int* nums, int numsSize){
+//given array and size
+//find element that appears the most, return it
+
+    for(int i = 0; i < numsSize; i++){
+        int count = 0;
+        for(int j = i; j < numsSize; j++){
+            if(nums[i] == nums[j]){
+                count++;
+            }
+            if(count > numsSize / 2){
+                return nums[i];
+            }
+        }
+    }
+    
+return -1;
+}
+
+int main() {
+    int nums[] = {5,5,1,1,1,5,5};
+    int size = sizeof(nums) / sizeof(nums[0]);
+
+    int result = majorityElement(nums, size);
+    printf("Majority element: %d\n", result);  // Expected: 5
+
+    return 0;
+}
